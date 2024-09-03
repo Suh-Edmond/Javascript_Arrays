@@ -95,10 +95,10 @@
     <div style="display: flex; justify-content: center; margin: 15px">
       <div>
         <label>Start Index </label>
-        <input type="text" id="start_index" />
+        <input type="text" id="start_index" placeholder="Enter a start index" />
 
         <label>End Index</label>
-        <input type="text" id="end_index" />
+        <input type="text" id="end_index" placeholder="Enter an end index" />
 
         <button onclick="getSliceArray()" class="bttn">Slice Array</button>
       </div>
@@ -121,23 +121,33 @@
     <div style="text-align: center; margin: 15px">
       <div>
         <label>Id </label>
-        <input type="number" id="id_card" style="margin-left: 55px" />
+        <input
+          type="number"
+          id="id_card"
+          style="margin-left: 55px"
+          placeholder="Enter the ID od the object"
+        />
       </div>
       <br />
 
       <div>
         <label>First Name:</label>
-        <input type="text" id="firstName" />
+        <input type="text" id="firstName" placeholder="Enter First name" />
       </div>
       <br />
       <div>
         <label>Last Name:</label>
-        <input type="text" id="lastName" />
+        <input type="text" id="lastName" placeholder="Enter last name" />
       </div>
       <br />
       <div>
         <label>Age:</label>
-        <input type="number" id="age" style="margin-left: 45px" />
+        <input
+          type="number"
+          id="age"
+          style="margin-left: 45px"
+          placeholder="Enter age"
+        />
       </div>
       <br />
       <div>
@@ -157,7 +167,11 @@
         <label>Description:</label>
       </div>
       <div style="margin-left: 80px">
-        <textarea rows="3" id="description"></textarea>
+        <textarea
+          rows="3"
+          id="description"
+          placeholder="Provide any description"
+        ></textarea>
       </div>
       <br />
       <div style="margin-left: 80px">
@@ -171,7 +185,7 @@
     <div style="text-align: center; margin: 15px">
       <h4>Remove Objects From Array</h4>
 
-      <input type="text" id="deletedId" />
+      <input type="text" id="deletedId" placeholder="Enter an ID" />
       <button onclick="removeObject()" class="btn">Remove</button>
 
       <div id="removeId"></div>
@@ -181,7 +195,7 @@
     <div style="text-align: center; margin: 15px">
       <h4>Display Objects At Given Index</h4>
 
-      <input type="text" id="getId" />
+      <input type="text" id="getId" placeholder="Enter an array index" />
       <button onclick="getObject()" class="btn">Display</button>
 
       <div id="object"></div>
