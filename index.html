@@ -1,0 +1,622 @@
+<html>
+  <head>
+    <style>
+      .main {
+        display: inline-block;
+        margin: 10px;
+      }
+
+      .form-ele {
+        width: 100%;
+        padding: 10px 10px;
+      }
+
+      input[type="text"],
+      input[type="number"] {
+        width: 20%;
+        padding: 12px 20px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        background-color: #4caf50;
+        color: white;
+        padding: 14px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .btn {
+        width: 5%;
+        background-color: #3c39e3;
+        color: white;
+        padding: 14px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .bttn {
+        width: 20%;
+        background-color: #3c39e3;
+        color: white;
+        padding: 14px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      textarea {
+        width: 21%;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        resize: none;
+      }
+
+      div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        /* padding: 20px; */
+      }
+    </style>
+  </head>
+  <body style="margin-bottom: 5rem">
+    <h3 id="title" style="text-align: center">JavaScript For Loop</h3>
+
+    <h3 id="title" style="text-align: center">Array Values</h3>
+
+    <div style="display: flex">
+      <p id="demo"></p>
+    </div>
+    <hr />
+    <div style="text-align: center; margin: 15px">
+      <h4>Find any Object</h4>
+
+      <input type="text" id="id" />
+      <button onclick="findObject()" class="btn">Find</button>
+
+      <div id="foundOj"></div>
+    </div>
+    <hr />
+    <h4 style="text-align: center">Sliced Array Objects</h4>
+    <div style="display: flex; justify-content: center; margin: 15px">
+      <div>
+        <label>Start Index </label>
+        <input type="text" id="start_index" />
+
+        <label>End Index</label>
+        <input type="text" id="end_index" />
+
+        <button onclick="getSliceArray()" class="bttn">Slice Array</button>
+      </div>
+    </div>
+    <div id="slicedArray" style="text-align: center; margin: 15px"></div>
+    <hr />
+    <div style="text-align: center; margin: 15px">
+      <h4>Filter Objects by Gender</h4>
+
+      <select type="text" id="filter" style="width: 25rem" class="form-ele">
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+      </select>
+      <button onclick="filterArray()" class="btn">Filter</button>
+
+      <div id="filteredElements"></div>
+    </div>
+    <hr />
+    <h4 style="text-align: center">Add Object to Array</h4>
+    <div style="text-align: center; margin: 15px">
+      <div>
+        <label>Id </label>
+        <input type="number" id="id_card" style="margin-left: 55px" />
+      </div>
+      <br />
+
+      <div>
+        <label>First Name:</label>
+        <input type="text" id="firstName" />
+      </div>
+      <br />
+      <div>
+        <label>Last Name:</label>
+        <input type="text" id="lastName" />
+      </div>
+      <br />
+      <div>
+        <label>Age:</label>
+        <input type="number" id="age" style="margin-left: 45px" />
+      </div>
+      <br />
+      <div>
+        <label>Gender:</label>
+        <select
+          type="text"
+          id="gender"
+          style="width: 23rem; margin-left: 20px"
+          class="form-ele"
+        >
+          <option value="MALE">Male</option>
+          <option value="FEMALE">Female</option>
+        </select>
+      </div>
+      <br />
+      <div>
+        <label>Description:</label>
+      </div>
+      <div style="margin-left: 80px">
+        <textarea rows="3" id="description"></textarea>
+      </div>
+      <br />
+      <div style="margin-left: 80px">
+        <button onclick="AddNewObject()" class="btn" style="width: 5rem">
+          Add
+        </button>
+      </div>
+    </div>
+    <div id="newArray" style="text-align: center; margin: 15px"></div>
+    <hr />
+    <div style="text-align: center; margin: 15px">
+      <h4>Remove Objects From Array</h4>
+
+      <input type="text" id="deletedId" />
+      <button onclick="removeObject()" class="btn">Remove</button>
+
+      <div id="removeId"></div>
+    </div>
+
+    <hr />
+    <div style="text-align: center; margin: 15px">
+      <h4>Display Objects At Given Index</h4>
+
+      <input type="text" id="getId" />
+      <button onclick="getObject()" class="btn">Display</button>
+
+      <div id="object"></div>
+    </div>
+
+    <script>
+      const person = {
+        firstName: "Peter",
+        lastName: "Philip",
+        age: 50,
+        eyeColor: "blue",
+        gender: "FEMALE",
+        id: 1,
+        description: "Hello here is some description",
+      };
+
+      const person2 = {
+        firstName: "John",
+        lastName: "Doe",
+        age: 20,
+        eyeColor: "blue",
+        gender: "FEMALE",
+        id: 2,
+        description: "Hello here is some description",
+      };
+
+      const person3 = {
+        firstName: "Crown",
+        lastName: "Steve",
+        age: 23,
+        eyeColor: "blue",
+        gender: "FEMALE",
+        id: 3,
+        description: "Hello here is some description",
+      };
+
+      const person4 = {
+        firstName: "Jobs",
+        lastName: "Elene",
+        age: 45,
+        eyeColor: "blue",
+        gender: "MALE",
+        id: 4,
+        description: "Hello here is some description",
+      };
+
+      const person5 = {
+        firstName: "Bits",
+        lastName: "Jonathan",
+        age: 15,
+        eyeColor: "blue",
+        gender: "MALE",
+        id: 5,
+        description: "Hello here is some description",
+      };
+
+      const person6 = {
+        firstName: "Pitty",
+        lastName: "Joel",
+        age: 75,
+        eyeColor: "blue",
+        gender: "MALE",
+        id: 6,
+        description: "Hello here is some description",
+      };
+
+      const allPersons = [person, person2, person3, person4, person5, person6];
+      let text = "";
+      for (let index = 0; index < allPersons.length; index++) {
+        text +=
+          "<div class='main'>" +
+          "</br>" +
+          "<label> ID: " +
+          "<b>" +
+          allPersons[index].id +
+          "</b>" +
+          "</label>" +
+          "</br>";
+        text +=
+          "<label> Name: " +
+          "<b>" +
+          allPersons[index].firstName +
+          " " +
+          allPersons[index].lastName +
+          "</b>" +
+          "</label>" +
+          "</br>";
+        text +=
+          "<label> Gender: " +
+          "<b>" +
+          allPersons[index].gender +
+          "</b>" +
+          "</label></br>";
+        text +=
+          "<label> Age:  " +
+          "<b>" +
+          allPersons[index].age +
+          "</b>" +
+          "</label></br>";
+        text +=
+          "<label> Description: " +
+          "<b>" +
+          allPersons[index].description +
+          "</b>" +
+          "</label>";
+        text += "</div>";
+
+        document.getElementById("demo").innerHTML = text;
+      }
+
+      document.getElementById("title").innerText =
+        "Array Length: " + allPersons.length;
+
+      function findObject() {
+        const value = document.getElementById("id").value;
+
+        let object = allPersons.find((el) => el.id == value);
+        if (object === undefined) {
+          document.getElementById("foundOj").innerHTML = "Object not found";
+        } else {
+          let text = "";
+
+          text += "<div>";
+          text += "<h5>" + "Found Object" + "</h5>";
+          text += "<label> ID:" + "<b>" + object.id + "</b>" + "</label></br>";
+          text +=
+            "<label> Name:" +
+            "<b>" +
+            object.firstName +
+            " " +
+            object.lastName +
+            "</b>" +
+            "</label></br>";
+          text +=
+            "<label> Age: " + "<b>" + object.age + "</b>" + "</label></br>";
+          text +=
+            "<label> Gender: " +
+            "<b>" +
+            object.gender +
+            "</b>" +
+            "</label></br>";
+          text +=
+            "<label>Description: " +
+            "<b>" +
+            object.description +
+            "</b>" +
+            "</label>";
+          text += "</div>";
+
+          document.getElementById("foundOj").innerHTML = text;
+        }
+      }
+
+      function getSliceArray() {
+        let start_index = document.getElementById("start_index").value;
+        let end_index = document.getElementById("end_index").value;
+        if (start_index < 0 || start_index > end_index) {
+          document.getElementById("slicedArray").innerHTML =
+            "Invalid Start Index";
+
+          return;
+        }
+        if (end_index < start_index || end_index > allPersons.length) {
+          document.getElementById("slicedArray").innerHTML =
+            "Invalid End Index";
+
+          return;
+        }
+        if (start_index == end_index) {
+          document.getElementById("slicedArray").innerHTML =
+            "Opps! Can't slice when start index equals end index";
+
+          return;
+        }
+
+        const sliceArray = allPersons.slice(start_index, end_index);
+        let text = "";
+
+        for (let i = 0; i < sliceArray.length; i++) {
+          text +=
+            "<div class='main'>" +
+            "</br>" +
+            "<label> ID: " +
+            "<b>" +
+            sliceArray[i].id +
+            "</b>" +
+            "</label>" +
+            "</br>";
+          text +=
+            "<label> Name: " +
+            "<b>" +
+            sliceArray[i].firstName +
+            " " +
+            sliceArray[i].lastName +
+            "</b>" +
+            "</label>" +
+            "</br>";
+          text +=
+            "<label> Gender: " +
+            "<b>" +
+            sliceArray[i].gender +
+            "</b>" +
+            "</label></br>";
+          text +=
+            "<label> Age:  " +
+            "<b>" +
+            sliceArray[i].age +
+            "</b>" +
+            "</label></br>";
+          text +=
+            "<label> Description: " +
+            "<b>" +
+            sliceArray[i].description +
+            "</b>" +
+            "</label>";
+          text += "</div>";
+
+          document.getElementById("slicedArray").innerHTML = text;
+        }
+      }
+
+      function filterArray() {
+        let filter = document.getElementById("filter").value;
+
+        const filteredArray = allPersons.filter((e) => e.gender === filter);
+        let text = "";
+        if (filteredArray.length <= 0) {
+          document.getElementById("filteredElements").innerHTML = "No Results";
+        } else {
+          for (let i = 0; i < filteredArray.length; i++) {
+            text +=
+              "<div class='main'>" +
+              "</br>" +
+              "<label> ID: " +
+              "<b>" +
+              filteredArray[i].id +
+              "</b>" +
+              "</label>" +
+              "</br>";
+            text +=
+              "<label> Name: " +
+              "<b>" +
+              filteredArray[i].firstName +
+              " " +
+              filteredArray[i].lastName +
+              "</b>" +
+              "</label>" +
+              "</br>";
+            text +=
+              "<label> Gender: " +
+              "<b>" +
+              filteredArray[i].gender +
+              "</b>" +
+              "</label></br>";
+            text +=
+              "<label> Age:  " +
+              "<b>" +
+              filteredArray[i].age +
+              "</b>" +
+              "</label></br>";
+            text +=
+              "<label> Description: " +
+              "<b>" +
+              filteredArray[i].description +
+              "</b>" +
+              "</label>";
+            text += "</div>";
+
+            document.getElementById("filteredElements").innerHTML = text;
+          }
+        }
+      }
+
+      function removeObject() {
+        let reObj = document.getElementById("deletedId").value;
+        const persons = allPersons.filter((e) => e.id != reObj);
+
+        let text = "";
+
+        for (let i = 0; i < persons.length; i++) {
+          text +=
+            "<div class='main'>" +
+            "</br>" +
+            "<label> ID: " +
+            "<b>" +
+            persons[i].id +
+            "</b>" +
+            "</label>" +
+            "</br>";
+          text +=
+            "<label> Name: " +
+            "<b>" +
+            persons[i].firstName +
+            " " +
+            persons[i].lastName +
+            "</b>" +
+            "</label>" +
+            "</br>";
+          text +=
+            "<label> Gender: " +
+            "<b>" +
+            persons[i].gender +
+            "</b>" +
+            "</label></br>";
+          text +=
+            "<label> Age:  " +
+            "<b>" +
+            persons[i].age +
+            "</b>" +
+            "</label></br>";
+          text +=
+            "<label> Description: " +
+            "<b>" +
+            persons[i].description +
+            "</b>" +
+            "</label>";
+          text += "</div>";
+
+          document.getElementById("removeId").innerHTML = text;
+        }
+      }
+
+      function AddNewObject() {
+        const newPerson = {
+          id: document.getElementById("id_card").value,
+          firstName: document.getElementById("firstName").value,
+          lastName: document.getElementById("lastName").value,
+          age: document.getElementById("age").value,
+          description: document.getElementById("description").value,
+          gender: document.getElementById("gender").value,
+        };
+
+        if (
+          newPerson.age == "" ||
+          newPerson.id == "" ||
+          newPerson.firstName == "" ||
+          newPerson.lastName == "" ||
+          newPerson.description == "" ||
+          newPerson.gender == ""
+        ) {
+          document.getElementById("newArray").innerHTML =
+            "Please fill all fields Object";
+
+          return;
+        }
+
+        const exist = allPersons.find((e) => e.id == newPerson.id);
+
+        if (exist != undefined) {
+          document.getElementById("newArray").innerHTML =
+            "Object already Exist";
+
+          return;
+        }
+
+        allPersons.push(newPerson);
+
+        let text = "";
+
+        for (let i = 0; i < allPersons.length; i++) {
+          text +=
+            "<div class='main'>" +
+            "</br>" +
+            "<label> ID: " +
+            "<b>" +
+            allPersons[i].id +
+            "</b>" +
+            "</label>" +
+            "</br>";
+          text +=
+            "<label> Name: " +
+            "<b>" +
+            allPersons[i].firstName +
+            " " +
+            allPersons[i].lastName +
+            "</b>" +
+            "</label>" +
+            "</br>";
+          text +=
+            "<label> Gender: " +
+            "<b>" +
+            allPersons[i].gender +
+            "</b>" +
+            "</label></br>";
+          text +=
+            "<label> Age:  " +
+            "<b>" +
+            allPersons[i].age +
+            "</b>" +
+            "</label></br>";
+          text +=
+            "<label> Description: " +
+            "<b>" +
+            allPersons[i].description +
+            "</b>" +
+            "</label>";
+          text += "</div>";
+
+          document.getElementById("newArray").innerHTML = text;
+        }
+      }
+
+      function getObject() {
+        let index = document.getElementById("getId").value;
+        if (index < 0 || index >= allPersons.length) {
+          document.getElementById("object").innerHTML = "Invalid Index";
+        }
+        const object = allPersons[index];
+
+        let text = "";
+
+        text += "<div>";
+        text += "<h5>" + "Found Object" + "</h5>";
+        text += "<label> ID:" + "<b>" + object.id + "</b>" + "</label></br>";
+        text +=
+          "<label> Name:" +
+          "<b>" +
+          object.firstName +
+          " " +
+          object.firstName +
+          "</b>" +
+          "</label></br>";
+        text += "<label> Age: " + "<b>" + object.age + "</b>" + "</label></br>";
+        text +=
+          "<label> Gender: " + "<b>" + object.gender + "</b>" + "</label></br>";
+        text +=
+          "<label>Description: " +
+          "<b>" +
+          object.description +
+          "</b>" +
+          "</label>";
+        text += "</div>";
+
+        document.getElementById("object").innerHTML = text;
+      }
+    </script>
+  </body>
+</html>
